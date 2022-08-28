@@ -18,25 +18,25 @@ class Habitacion(BaseModel):
     estado_habitacion = models.BooleanField(
         'Estado Habitación', blank=False, null=False, default=False)
     caracteristica = models.ManyToManyField("Caracteristica")
-    imagen_habitacion = models.ImageField('Imagen de Habitación', upload_to=None, height_field=None, width_field=None, max_length=None, default=' ')
+    imagen_habitacion = models.ImageField(
+        'Imagen de Habitación', upload_to=None, height_field=None, width_field=None, max_length=None, default=' ')
 
     class Meta:
         verbose_name = ('Habitacion')
         verbose_name_plural = ('Habitaciones')
 
     def __str__(self):
-        return self.tipo_habitacion
+        id_habitacion= str(self.id)
+        return id_habitacion
 
 
 class Caracteristica(BaseModel):
-    nombre_caracteristica=models.CharField('Caracterisiticas', max_length=50,blank=False, null=False, unique=True)
+    nombre_caracteristica = models.CharField(
+        'Caracterisiticas', max_length=50, blank=False, null=False, unique=True)
 
     class Meta:
         verbose_name = ('Caracteristica')
         verbose_name_plural = ('Caracteristicas')
 
     def __str__(self):
-        return self.nombre_caracteristica 
-
-
-        
+        return self.nombre_caracteristica

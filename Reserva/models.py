@@ -20,10 +20,10 @@ class Reserva(BaseModel):
     numero_contacto = models.CharField(
         "Numero de contacto", max_length=12, null=False)
     email = models.EmailField("Email", null=False)
-    id_servicio = models.ForeignKey(
-        "servicios.Servicios", on_delete=models.CASCADE)
     id_habitacion = models.ForeignKey(
         "habitacion.Habitacion", on_delete=models.CASCADE)
+    id_servicio = models.ManyToManyField(
+        "ServiciosReserva")
 
     class Meta:
         verbose_name = ('Reserva')
@@ -44,26 +44,3 @@ class ServiciosReserva(BaseModel):
 
     def __str__(self):
         return self.nombre_servicio
-
-
-class HorariosServiciosReserva(BaseModel):
-    id_servicio = models.ForeignKey("Servicios", on_delete=models.CASCADE)
-    d = (
-        ('Lunes', 'Lunes'),
-        ('Martes', 'Martes'),
-        ('Miercoles', 'Miercoles'),
-        ('Jueves', 'Jueves'),
-        ('Viernes', 'Viernes'),
-        ('Sábado', 'Sábado'),
-        ('Domingo', 'Domingo'),
-    )
-    dias = models.CharField('Dia', max_length=50,
-                            blank=False, null=False, choices=d)
-    hora = models.CharField('Hora', max_length=50, blank=False, null=False)
-
-    class Meta:
-        verbose_name = ('Horario')
-        verbose_name_plural = ('Horarios')
-
-    def __str__(self):
-        return str(self.id) 
