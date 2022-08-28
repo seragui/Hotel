@@ -38,3 +38,5 @@ class Caracteristica(BaseModel):
     def __str__(self):
         return self.nombre_caracteristica 
 
+
+        
