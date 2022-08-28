@@ -36,4 +36,5 @@ urlpatterns = [
     path('empleados/', include('empleados.api.routers')),
     path('habitacion/', include('habitacion.api.routers')),
     path('servicio/', include('servicios.api.routers')),
+    path('reserva/', include('Reserva.api.routers'))
 ]
