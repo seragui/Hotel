@@ -26,6 +26,7 @@ class Reserva(BaseModel):
         "habitacion.Habitacion", on_delete=models.CASCADE)
     id_servicio = models.ManyToManyField(
         "ServiciosReserva")
+    total_gasto = models.FloatField("Costo de habitacion", blank=False, default=0)
 
     class Meta:
         verbose_name = ('Reserva')
