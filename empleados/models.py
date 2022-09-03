@@ -7,7 +7,7 @@ from base.models import BaseModel
 class Cargo(BaseModel):
 
     nombre_cargo = models.CharField(
-        'Nombre de Cargo', max_length=50, blank=False, null=False, unique=True)
+        'Nombre de Cargo', max_length=50, blank=False, unique=True)
 
     class Meta:
         verbose_name = ("Cargo")
@@ -20,7 +20,7 @@ class Cargo(BaseModel):
 class Departamento(BaseModel):
 
     nombre_departamento = models.CharField(
-        'Nombre de Departamento', max_length=50, blank=False, null=False, unique=True)
+        'Nombre de Departamento', max_length=50, blank=False, unique=True)
 
     class Meta:
         verbose_name = ('Departamento')
@@ -33,30 +33,30 @@ class Departamento(BaseModel):
 class Empleados(BaseModel):
 
     nombres = models.CharField(
-        'Nombres', max_length=100, blank=False, null=False)
+        'Nombres', max_length=100, blank=False )
     apellidos = models.CharField(
-        'Apellidos', max_length=100, blank=False, null=False)
+        'Apellidos', max_length=100, blank=False )
     fecha_nacimiento = models.DateField(
-        'Fecha de Nacimiento', auto_now=False, auto_now_add=False, blank=False, null=False)
+        'Fecha de Nacimiento', auto_now=False, auto_now_add=False, blank=False )
     nacionalidad = models.CharField(
-        'Nacionalidad', max_length=50, blank=False, null=False)
-    dui = models.IntegerField('DUI', blank=False, null=False, unique=True)
+        'Nacionalidad', max_length=50, blank=False )
+    dui = models.IntegerField('DUI', blank=False , unique=True)
     isss = models.IntegerField(
-        'Numero de Afiliado', blank=False, null=False, unique=True)
+        'Numero de Afiliado', blank=False , unique=True)
     nup = models.IntegerField('Numero de Pensionado',
-                              blank=False, null=False, unique=True)
+                              blank=False , unique=True)
     direccion = models.TextField(
-        'Direccion', max_length=400, blank=False, null=False)
-    ciudad = models.CharField('Ciudad', max_length=50, blank=False, null=False)
-    telefono = models.IntegerField('Telefono', blank=False, null=False)
+        'Direccion', max_length=400, blank=False )
+    ciudad = models.CharField('Ciudad', max_length=50, blank=False )
+    telefono = models.IntegerField('Telefono', blank=False )
     sexo = models.CharField('Sexo', max_length=1)
-    email = models.EmailField('Email', max_length=254, blank=False, null=False, default='email')
+    email = models.EmailField('Email', max_length=254, blank=False , default='email')
     fecha_contratacion = models.DateField(
-        'Fecha de Contratacion', auto_now=False, auto_now_add=False, blank=False, null=False)
+        'Fecha de Contratacion', auto_now=False, auto_now_add=False, blank=False )
     id_cargo = models.ForeignKey(
-        'Cargo', verbose_name='Cargo', on_delete=models.CASCADE, blank=False, null=False)
+        'Cargo', verbose_name='Cargo', on_delete=models.CASCADE, blank=False )
     id_departamento = models.ForeignKey(
-        'Departamento', verbose_name='Departamento', on_delete=models.CASCADE, blank=False, null=False)
+        'Departamento', verbose_name='Departamento', on_delete=models.CASCADE, blank=False )
 
     class Meta:
         verbose_name = ("Empleado")
