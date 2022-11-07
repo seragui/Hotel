@@ -6,4 +6,5 @@ router=DefaultRouter()
 
 router.register(r'habitacion',HabitacionViewSet, basename='habitacion')
 router.register(r'caracteristica',CaracteristicaViewSet, basename='caracteristica_habitacion')
+router.register(r'disponibilidad', HabitacionReservada, basename='disponibilidad')
 urlpatterns=router.urls

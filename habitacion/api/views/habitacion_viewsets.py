@@ -41,3 +41,17 @@ class HabitacionViewSet(viewsets.ModelViewSet):
             habitacion.save()
             return Response({'message': 'Habitación Eliminada correctamente!'}, status=status.HTTP_200_OK)
         return Response({'error': 'No existe una habitación con esos datos'}, status=status.HTTP_400_BAD_REQUEST)
+
+class HabitacionReservada(viewsets.ModelViewSet):
+    serializer_class=HabitacionSerializer
+
+    def get_queryset(self, pk=None):
+        if pk is None:
+            return self.get_serializer().Meta.model.objects.filter(estado_habitacion=False)
+        else:
+            return self.get_serializer().Meta.model.objects.filter(id=pk, estado_habitacion=False).first()
+
+
+    def list(self,request):
+        habitacion_serializar=self.get_serializer(self.get_queryset(),many=True)
+        return Response(habitacion_serializar.data,status=status.HTTP_200_OK)
